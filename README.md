@@ -1,4 +1,4 @@
-# BayesOptQRF
+# ParallelBayesOptQRF
 BayesOptQRF is an R function that combines the power of Bayesian optimization with the flexibility of Quantile Regression Forests. It provides a comprehensive toolkit for optimizing complex, non-linear functions while accommodating uncertainty and capturing heterogeneity in data. In particular, it is built upon the R packages ....
 
 ## Bayesian Optimization
