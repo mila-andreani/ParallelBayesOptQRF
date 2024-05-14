@@ -170,9 +170,9 @@ personalized_QRF_optimization = parallelBayesOptQRF('ranger', Boston, fit_opt_mo
 
 # Non-crossing quantiles
 
-The package allows to optimize QRFs to predict multiple non-crossing quantiles. It just needs to give a vector of quantiles as input in the function along with a vector of weights. These weights allow to give more or less weights to different quantiles in the Score function used to optimized the model. The weights must sum to 1 to compute a proper weighted mean of the Score function. 
+The package allows to optimize QRFs to predict multiple non-crossing quantiles. It just needs to give a vector of quantiles as input in the function along with a vector of weights. These weights allow to give more or less weight to different quantiles in the Score function used to optimized the model. The weights must sum to 1 to compute a proper weighted mean of the Score function. 
 
-The function check_inputs() also checks this parameter. 
+The function check_inputs() also checks the valitidy of the weights parameter. 
 
 The default setting allows to compute a simple mean of the Score functions related to the different quantile levels.
 
