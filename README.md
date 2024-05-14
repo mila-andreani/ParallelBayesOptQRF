@@ -53,8 +53,37 @@ bayesopt_ctrl=list(init_points = 5,
                    optkernel = list(type = "matern", nu = 5/2),
                    iters.n = 4,
                    iters.k = 4)
-``` 
-## 3) Check the inputs with the check_inputs() function
+```
+## 4) Run a fast Bayesian Optimization with default values to predict 1 quantile
+
+The package allows to run a fast Bayesian Optimization with default values that change according to the chosen model without the need to specify them. To allow parallel computation it just needs to set parallel=TRUE. Default value for 1 quantile is 0.5.
+
+``` r
+QRF_ranger_optimization = ParallelBayesOptQRF('ranger',
+                                Boston,
+                                bounds,
+                                bayesopt_ctrl, parallel=TRUE)
+QRF_grf_optimization = ParallelBayesOptQRF('grf',
+                            Boston,
+                            bounds,
+                            bayesopt_ctrl, parallel=TRUE)
+QRF_src_optimization = ParallelBayesOptQRF('grf',
+                             Boston,
+                             bounds,
+                             bayesopt_ctrl, parallel=TRUE)
+
+```
+The optimization returns a list comprising infromation on the optimization process (opt_res), the predictions and the optimized model. The feature of this package is that the optimized model object retains the features of the objects obtained with the original packages, so that the same functions can be applied.
+
+``` r
+
+QRF_ranger_optimization$optimized_model
+QRF_grf_optimization$optimized_model
+QRF_src_optimization$optimized_model
+
+```
+
+## 5) Check the inputs with the check_inputs() function
 
 The check_inputs() function provides a fast and easy way to check the input parameters (including dataset used for training and testing the model) before running a demanding optimization. If correct, the function returns the chosen inputs along with the default values of arguments that have not been specified.
 
