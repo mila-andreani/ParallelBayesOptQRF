@@ -1,0 +1,18 @@
+Package: ParallelBayesOptQRF
+Type: Package
+Title: Parallel Bayesian Optimization for Quantile Regression Forests and non-crossing quantiles
+Version: 0.1.0
+Author: Mila Andreani
+Maintainer: Mila Andreani <mila.andreani@sns.it>
+Description: It allows to optimize hyperparameters with parallel computation to perform quantile regression with Generalized Regression Forests, ranger package and randomForestSRC package. 
+    It is built upon the ParBayesianOptimization package.
+    Additional functions allow to extract optimized parameters and compute variable importance.
+License: MIT + file LICENSE
+Imports: 
+    ggplot2,
+    grf,
+    ParBayesianOptimization,
+    randomForestSRC,
+    ranger
+Encoding: UTF-8
+RoxygenNote: 7.3.1
