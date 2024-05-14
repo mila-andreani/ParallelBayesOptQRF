@@ -87,7 +87,7 @@ QRF_src = QRF_src_optimization$optimized_model
 ## 5) Obtain optimized parameters with opt_params() and variable importance with var_imp()
 
 ``` r
-opt_params(QRF_ranger_optimization)
+opt_params(QRF_grf_optimization)
 
 #> Optimal Parameters found via Bayesian Optimization:
 #> [[1]]
@@ -110,6 +110,8 @@ opt_params(QRF_ranger_optimization)
 #> [1] 0.7005528
 
 ```
+The var_imp() function returns the sorted list of variables according to their importance and the related ggplot.
+
 ``` r
 var_imp(QRF_grf_optimization)
 
@@ -131,9 +133,12 @@ var_imp(QRF_grf_optimization)
 
 #>$plot_varimp
 ```
-<img src='main/Varimpplot.png' align = 'center' height="300" />
+<p align="center">
+<img src='Varimpplot.png' width="560" height="430" />
+</p>
 
-## 5) Check the inputs with the check_inputs() function
+#
+## 5) Run a parallelBayesOptQRF with specific inputs
 
 The check_inputs() function provides a fast and easy way to check the input parameters (including dataset used for training and testing the model) before running a demanding optimization. If correct, the function returns the chosen inputs along with the default values of arguments that have not been specified.
 
@@ -157,6 +162,41 @@ inputs=check_inputs('ranger', Boston, fit_opt_model = "Yes", oos='"No")
 #> splitrule        "variance"   
 #> importance       "permutation"
 ``` 
+Now we can run the actual optimization adding the bounds and  bayesopt_ctrl arguments:
+
+``` r
+personalized_QRF_optimization = parallelBayesOptQRF('ranger', Boston, fit_opt_model = "Yes", oos="No", bounds, bayesopt_ctrl)
+``` 
+
+# Non-crossing quantiles
+
+The package allows to optimize QRFs to predict multiple non-crossing quantiles. It just needs to give a vector of quantiles as input in the function along with a vector of weights. These weights allow to give more or less weights to different quantiles in the Score function used to optimized the model. The weights must sum to 1 to compute a proper weighted mean of the Score function. 
+
+The function check_inputs() also checks this parameter. 
+
+The default setting allows to compute a simple mean of the Score functions related to the different quantile levels.
+
+
+``` r
+#default weights
+
+noncrossing_QRF_optimization = parallelBayesOptQRF('grf', Boston, p=c(0.1, 0.5, 0.9), fit_opt_model = "Yes", oos="No", bounds, bayesopt_ctrl)
+
+#personalized weights (do not sum to 1)
+
+check_inputs('grf', Boston, p=c(0.1, 0.5, 0.9), weights=c(0.2, 0.8, 0.3), fit_opt_model = "Yes", oos="No")
+
+#> Error in check_inputs("grf", Boston, p = c(0.1, 0.5, 0.9), weights = c(0.2, :
+'weights' must add to 1
+
+#Run an optimization with proper weights
+
+noncrossing_QRF_optimization = parallelBayesOptQRF('grf', Boston, p=c(0.1, 0.5, 0.9), weights=c(0.2, 0.5, 0.3), fit_opt_model = "Yes", oos="No", bounds, bayesopt_ctrl)
+
+```
+
+
+# Details
 
 ## Bayesian Optimization
 
