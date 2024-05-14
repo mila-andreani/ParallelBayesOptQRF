@@ -283,7 +283,7 @@ ParallelBayesOptQRF <- function (model=NULL,
 
       if (oos=='No'){
 
-        predictions <- q.forest[["quantreg"]][["quantiles"]]
+        predictions <- t(q.forest[["quantreg"]][["quantiles"]])
 
       } else if (oos=='Yes') {
 
