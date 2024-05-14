@@ -61,22 +61,22 @@ The check_inputs() function provides a fast and easy way to check the input para
 ``` r
 inputs=check_inputs('ranger', Boston, fit_opt_model = "Yes", oos='"No")
 
-#>You're good to go! ;) Here's the list of the input arguments:
-#>                 Settings     
-#>model            "ranger"     
-#>p                "0.5"        
-#>weights          "1"          
-#>DF               "OK"         
-#>Y_obs            "OK"         
-#>new_data         "OK"         
-#>parallel         "FALSE"      
-#>fit_opt_model    "Yes"        
-#>oos              "No"         
-#>honesty          "TRUE"       
-#>honesty_fraction "0.3"        
-#>samptype         "swr"        
-#>splitrule        "variance"   
-#>importance       "permutation"
+#> You're good to go! ;) Here's the list of the input arguments:
+#>                  Settings     
+#> model            "ranger"     
+#> p                "0.5"        
+#> weights          "1"          
+#> DF               "OK"         
+#> Y_obs            "OK"         
+#> new_data         "OK"         
+#> parallel         "FALSE"      
+#> fit_opt_model    "Yes"        
+#> oos              "No"         
+#> honesty          "TRUE"       
+#> honesty_fraction "0.3"        
+#> samptype         "swr"        
+#> splitrule        "variance"   
+#> importance       "permutation"
 ``` 
 
 
