@@ -111,7 +111,7 @@ opt_params(QRF_ranger_optimization)
 
 ```
 ``` r
-#> var_imp(QRF_grf_optimization)
+var_imp(QRF_grf_optimization)
 
 #> $varimp_df
 #>    Variable Importance
