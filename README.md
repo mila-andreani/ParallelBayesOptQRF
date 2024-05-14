@@ -1,11 +1,11 @@
 # ParallelBayesOptQRF
-BayesOptQRF is an R function that combines the power of parallel Bayesian optimization with the flexibility of Quantile Regression Forests fitted with different R packages. It provides a comprehensive toolkit for optimizing complex, non-linear functions while accommodating uncertainty and capturing heterogeneity in data. In particular, it is built upon the R packages parBayesianOptimization, ranger, grf, randomForestSRC.
+ParallelBayesOptQRF is an R package that allows to optimize Quantile Regression Forests models via parallel Bayesian Optimization. It is built upon the R packages parBayesianOptimization, ranger, grf and randomForestSRC.
 
 ## Functionality
 
 BayesOptQRF provides a user-friendly interface for performing parallel Bayesian optimization of Quantile Regression Forests in R. Users can specify the type of Quantile Regression Forest to be fitted, the score function, define the search space, and set optimization parameters such as the number of iterations and the acquisition function to use. 
 
-Additional functions in the package allow to extract the optimized set of parameters, the predictions and and the variable importance from the optimized model.
+Additional functions in the package allow to extract the optimized set of parameters, the estimated predictions and the variable importance from the optimized model.
 
 ## Bayesian Optimization
 
