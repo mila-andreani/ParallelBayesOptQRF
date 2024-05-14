@@ -186,15 +186,14 @@ noncrossing_QRF_optimization = parallelBayesOptQRF('grf', Boston, p=c(0.1, 0.5, 
 
 check_inputs('grf', Boston, p=c(0.1, 0.5, 0.9), weights=c(0.2, 0.8, 0.3), fit_opt_model = "Yes", oos="No")
 
-#> Error in check_inputs("grf", Boston, p = c(0.1, 0.5, 0.9), weights = c(0.2, :
-'weights' must add to 1
+#> Error in check_inputs("grf", Boston, p = c(0.1, 0.5, 0.9), weights = c(0.2, : 'weights' must add to 1
 
 #Run an optimization with proper weights
 
 noncrossing_QRF_optimization = parallelBayesOptQRF('grf', Boston, p=c(0.1, 0.5, 0.9), weights=c(0.2, 0.5, 0.3), fit_opt_model = "Yes", oos="No", bounds, bayesopt_ctrl)
 
 ```
-
+Quantiles are non-crossing since they are obtained from the same Cumulative Distribution Function estimated qith a single QRF. For this reason, the optimized parameters and the variable importance will not be quantile-specific. Quantile-specific results are obtained by running separate optimizations for each quantile.
 
 # Details
 
