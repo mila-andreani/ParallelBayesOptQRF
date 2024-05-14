@@ -67,7 +67,7 @@ QRF_grf_optimization = ParallelBayesOptQRF('grf',
                             Boston,
                             bounds,
                             bayesopt_ctrl, parallel=TRUE)
-QRF_src_optimization = ParallelBayesOptQRF('grf',
+QRF_src_optimization = ParallelBayesOptQRF('src',
                              Boston,
                              bounds,
                              bayesopt_ctrl, parallel=TRUE)
@@ -77,11 +77,61 @@ The optimization returns a list comprising infromation on the optimization proce
 
 ``` r
 
-QRF_ranger_optimization$optimized_model
-QRF_grf_optimization$optimized_model
-QRF_src_optimization$optimized_model
+QRF_ranger = QRF_ranger_optimization$optimized_model
+
+QRF_grf = QRF_grf_optimization$optimized_model
+
+QRF_src = QRF_src_optimization$optimized_model
 
 ```
+## 5) Obtain optimized parameters with opt_params() and variable importance with var_imp()
+
+``` r
+opt_params(QRF_ranger_optimization)
+
+#> Optimal Parameters found via Bayesian Optimization:
+#> [[1]]
+#>                    
+#> M try             6.0
+#> Min Node Size   103.0
+#> # Trees         297.0
+#> Sample Fraction   0.7
+#>
+#> $mtry
+#> [1] 6
+#>
+#> $min.node.size
+#> [1] 103
+#>
+#> $n.trees
+#> [1] 297
+#>
+#> $sample.fraction
+#> [1] 0.7005528
+
+```
+``` r
+#> var_imp(QRF_grf_optimization)
+
+#> $varimp_df
+#>    Variable Importance
+#> 3      chas 0.02016571
+#> 11    black 0.02352667
+#> 5        rm 0.02515113
+#> 13     medv 0.02688762
+#> 10  ptratio 0.04195589
+#> 1        zn 0.05030225
+#> 12    lstat 0.05366320
+#> 8       rad 0.06721905
+#> 6       age 0.06884351
+#> 9       tax 0.08727273
+#> 7       dis 0.09399463
+#> 2     indus 0.14776987
+#> 4       nox 0.17129653
+
+#>$plot_varimp
+```
+<img src='main/Varimpplot.png' align = 'center' height="300" />
 
 ## 5) Check the inputs with the check_inputs() function
 
@@ -108,8 +158,6 @@ inputs=check_inputs('ranger', Boston, fit_opt_model = "Yes", oos='"No")
 #> importance       "permutation"
 ``` 
 
-
-``` r
 ## Bayesian Optimization
 
 Bayesian optimization is a powerful optimization technique that is particularly useful for optimizing black-box functions where the objective function is expensive to evaluate and may be noisy or uncertain. It works by building a probabilistic model of the objective function and using this model to guide the search for the optimal solution. By iteratively selecting the next point to evaluate based on a balance of exploration and exploitation, Bayesian optimization can efficiently find the global optimum with a minimal number of evaluations.
