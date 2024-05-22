@@ -1,7 +1,12 @@
 [![built with R](https://img.shields.io/badge/build%20with-R-red.svg)]()
 
 # ParallelBayesOptQRF
-ParallelBayesOptQRF is an R package that allows to optimize Quantile Regression Forests via parallel Bayesian Optimization. This package allows also to compute multiple non-crossing quantiles and it is built upon the R packages parBayesianOptimization, ranger, grf and randomForestSRC.
+ParallelBayesOptQRF is an R package that allows to optimize Quantile Regression Forests via parallel Bayesian Optimization. This package allows also to compute multiple non-crossing quantiles and it is built upon the R packages parBayesianOptimization [^1], ranger [^2], grf [^3] and randomForestSRC [^4].
+
+[^1]: https://github.com/AnotherSamWilson/ParBayesianOptimization
+[^2]: https://github.com/imbs-hl/ranger
+[^3]: https://github.com/grf-labs/grf
+[^4]: https://github.com/kogalur/randomForestSRC
 
 It is possibile to specify the type of Quantile Regression Forest to be fitted, the score function, define the search space, and set optimization parameters such as the number of iterations and the acquisition function to use. 
 
